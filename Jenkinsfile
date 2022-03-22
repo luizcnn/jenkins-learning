@@ -1,6 +1,6 @@
 #!groovy
 
-node("commons") {
+node {
     deleteDir()
     def environment = params.env.toLowerCase()
     def connectorName = params.connectorName.toLowerCase()
