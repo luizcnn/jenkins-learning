@@ -12,7 +12,7 @@ node {
 
     stage (name: "Clone") {
         checkout scm
-        sh "git archive --remote=${git_repository_url} --format=tar ${branch_name} ${connectorPath} | tar xf"
+        sh "git archive --remote=https://github.com/luizcnn/jenkins-learning --format=tar main ${connectorPath} | tar xf"
     }
     def connector = readFile "${WORKSPACE}${connectorPath}"
     stage (name: "Execute Operation") {
