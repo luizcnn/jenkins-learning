@@ -19,7 +19,7 @@ node {
         if(operation == "create") {
             build(job: './second-pipeline', wait: true, parameters: [
                 [$class: 'StringParameterValue', name: 'body', value: connector],
-                [$class: 'StringParameterValue', name: 'environment', value: environment]
+                [$class: 'StringParameterValue', name: 'environment', value: environment.toUpperCase()]
             ])
         }
     }
