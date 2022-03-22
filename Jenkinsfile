@@ -6,7 +6,7 @@ node {
     def connectorName = params.connectorName.toLowerCase()
     def operation = params.operation.toLowerCase()
 
-    def connectorPath = "${environment}/${connectorName}.json"
+    def connectorPath = "connectors/${environment}/${connectorName}.json"
     println "using env=${environment}"
 
     stage (name: "Clone") {
