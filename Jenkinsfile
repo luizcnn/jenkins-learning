@@ -17,7 +17,7 @@ node {
 
     stage (name: "Execute Operation") {
         if(operation == "create") {
-            def connector = readFile "${WORKSPACE}/${connectorPath}"
+            def connector = readFile "/tmp/repo/${connectorPath}"
             build(job: './second-pipeline', wait: true, parameters: [
                 [$class: 'StringParameterValue', name: 'body', value: connector],
                 [$class: 'StringParameterValue', name: 'environment', value: environment.toUpperCase()]
