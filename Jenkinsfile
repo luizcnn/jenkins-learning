@@ -6,8 +6,8 @@ node {
     def connectorName = params.connectorName.toLowerCase()
     def operation = params.operation.toLowerCase()
 
-    def connectorPath = "./connectors/${environment}/${connectorName}.json"
-    def connector = readFile(file: connectorPath)
+    def connectorPath = "/connectors/${environment}/${connectorName}.json"
+    def connector = readFile "${WORKSPACE}${connectorPath}"
 
     println "using env=${environment}"
 
