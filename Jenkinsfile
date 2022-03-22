@@ -6,15 +6,15 @@ node {
     def connectorName = params.connectorName.toLowerCase()
     def operation = params.operation.toLowerCase()
 
-    def connectorPath = "/connectors/${environment}/${connectorName}.json"
-
+    def connectorPath = "./connectors/${environment}/${connectorName}.json"
+    def connector = ''
     println "using env=${environment}"
 
     stage (name: "Clone") {
         checkout scm
-        sh "git archive --remote=https://github.com/luizcnn/jenkins-learning --format=tar main ${connectorPath} | tar xf -"
+        connector = readFile(file: connectorPath)
     }
-    def connector = readFile "${WORKSPACE}${connectorPath}"
+
     stage (name: "Execute Operation") {
         if(operation == "create") {
             build(job: './second-pipeline', wait: true, parameters: [
